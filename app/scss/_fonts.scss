@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "CardChars";
+  font-style: normal;
+  font-display: swap;
+  src: url("../fonts/cardchars.woff2") format("woff2"),
+    url("../fonts/cardchars.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Roboto-Bold";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/Roboto-Bold.woff2") format("woff2"),
+    url("../fonts/Roboto-Bold.woff") format("woff");
+}

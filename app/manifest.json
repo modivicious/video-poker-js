@@ -1,0 +1,18 @@
+{
+  "lang": "ru",
+  "dir": "ltr",
+  "name": "Video Poker",
+  "description": "",
+  "short_name": "",
+  "icons": [
+    {
+      "src": "images/favicon/google-touch-icon.png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "index.html",
+  "display": "fullscreen",
+  "orientation": "landscape-primary",
+  "background_color": "#f8f8f8",
+  "theme_color": "#b0b5ba"
+}

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Poker</title>
+  <meta name="description" content="Video Poker">
+  <meta name="theme-color" content="#b0b5ba">
+  <link rel="preload" href="fonts/cardchars.woff2" as="font" crossorigin>
+  <link rel="preload" href="fonts/Roboto-Bold.woff2" as="font" crossorigin>
+  <link rel="icon" href="images/favicon/favicon.svg">
+  <link rel="mask-icon" href="images/favicon/apple-touch-icon.png" color="#000000">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+  <main class="main">
+    <div class="main-container">
+      <div class="pseudo-display">
+        <table class="combinations">
+          <tr>
+            <td class="name">Royal Flush</td>
+            <td>250</td>
+            <td>500</td>
+            <td>750</td>
+            <td>1000</td>
+            <td>4000</td>
+          </tr>
+          <tr>
+            <td class="name">Straight Flush</td>
+            <td>50</td>
+            <td>100</td>
+            <td>150</td>
+            <td>200</td>
+            <td>250</td>
+          </tr>
+          <tr>
+            <td class="name">Four of a kind</td>
+            <td>25</td>
+            <td>50</td>
+            <td>75</td>
+            <td>100</td>
+            <td>125</td>
+          </tr>
+          <tr>
+            <td class="name">Full house</td>
+            <td>9</td>
+            <td>18</td>
+            <td>27</td>
+            <td>36</td>
+            <td>45</td>
+          </tr>
+          <tr>
+            <td class="name">Flush</td>
+            <td>6</td>
+            <td>12</td>
+            <td>18</td>
+            <td>24</td>
+            <td>30</td>
+          </tr>
+          <tr>
+            <td class="name">Straight</td>
+            <td>4</td>
+            <td>8</td>
+            <td>12</td>
+            <td>16</td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <td class="name">Three of a kind</td>
+            <td>3</td>
+            <td>6</td>
+            <td>9</td>
+            <td>12</td>
+            <td>15</td>
+          </tr>
+          <tr>
+            <td class="name">Two pairs</td>
+            <td>2</td>
+            <td>4</td>
+            <td>6</td>
+            <td>8</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td class="name">Jacks or better</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+          </tr>
+        </table>
+
+        <div class="cards-container">
+          <div class="card-box">
+            <div class="card">
+              <div class="side front">
+                <div class="info">
+                  <span class="point"></span>
+                  <img class="suit small" src="images/content/1x1.webp" alt="">
+                </div>
+                <img class="suit" src="images/content/1x1.webp" alt="">
+                <div class="info turned">
+                  <span class="point"></span>
+                  <img class="suit small" src="images/content/1x1.webp" alt="">
+                </div>
+              </div>
+              <div class="side back"></div>
+            </div>
+            <button class="hold-button button" type="button"><span> Hold </span></button>
+          </div>
+          <div class="card-box">
+            <div class="card">
+              <div class="side front">
+                <div class="info">
+                  <span class="point"></span>
+                  <img class="suit small" src="images/content/1x1.webp" alt="">
+                </div>
+                <img class="suit" src="images/content/1x1.webp" alt="">
+                <div class="info turned">
+                  <span class="point"></span>
+                  <img class="suit small" src="images/content/1x1.webp" alt="">
+                </div>
+              </div>
+              <div class="side back"></div>
+            </div>
+            <button class="hold-button button" type="button"><span> Hold </span></button>
+          </div>
+          <div class="card-box">
+            <div class="card">
+              <div class="side front">
+                <div class="info">
+                  <span class="point"></span>
+                  <img class="suit small" src="images/content/1x1.webp" alt="">
+                </div>
+                <img class="suit" src="images/content/1x1.webp" alt="">
+                <div class="info turned">
+                  <span class="point"></span>
+                  <img class="suit small" src="images/content/1x1.webp" alt="">
+                </div>
+              </div>
+              <div class="side back"></div>
+            </div>
+            <button class="hold-button button" type="button"><span> Hold </span></button>
+          </div>
+          <div class="card-box">
+            <div class="card">
+              <div class="side front">
+                <div class="info">
+                  <span class="point"></span>
+                  <img class="suit small" src="images/content/1x1.webp" alt="">
+                </div>
+                <img class="suit" src="images/content/1x1.webp" alt="">
+                <div class="info turned">
+                  <span class="point"></span>
+                  <img class="suit small" src="images/content/1x1.webp" alt="">
+                </div>
+              </div>
+              <div class="side back"></div>
+            </div>
+            <button class="hold-button button" type="button"><span> Hold </span></button>
+          </div>
+          <div class="card-box">
+            <div class="card">
+              <div class="side front">
+                <div class="info">
+                  <span class="point"></span>
+                  <img class="suit small" src="images/content/1x1.webp" alt="">
+                </div>
+                <img class="suit" src="images/content/1x1.webp" alt="">
+                <div class="info turned">
+                  <span class="point"></span>
+                  <img class="suit small" src="images/content/1x1.webp" alt="">
+                </div>
+              </div>
+              <div class="side back"></div>
+            </div>
+            <button class="hold-button button" type="button"><span> Hold </span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="balance-display display">
+          <div class="balance"></div>
+        </div>
+        <div class="bet">
+          <button class="bet-arrow bet-prev" type="button" aria-label="Previous bet"></button>
+          <div class="bet-display display">
+            <span>Wager:</span>
+            <div class="bet-item active">10000</div>
+            <div class="bet-item">20000</div>
+            <div class="bet-item">30000</div>
+            <div class="bet-item">40000</div>
+            <div class="bet-item">50000</div>
+          </div>
+          <button class="bet-arrow bet-next" type="button" aria-label="Next Bet"></button>
+        </div>
+        <button class="deal-button button" type="button">Deal</button>
+      </div>
+    </div>
+
+    <div class="payout modal">
+      <div class="text">payout:</div>
+      <div class="number"></div>
+    </div>
+
+    <div class="over-modal modal">
+      <div class="box">
+        <p>It's over. Want to restart?</p>
+        <button class="restart" type="button">Restart</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/main.min.js"></script>
+</body>
+
+</html>
