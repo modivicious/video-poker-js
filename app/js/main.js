@@ -38,7 +38,6 @@ class Player {
     this.name = name;
     this.dollars = dollars;
     this.currentBet = 10000;
-    this.isHere = true;
     this.cards = [];
   }
 }
@@ -152,7 +151,7 @@ function getCountOfDuplicates() {
   return count;
 }
 
-let cards = document.querySelectorAll('.card');
+const cards = document.querySelectorAll('.card');
 
 function cardRender(i) {
   let points = cards[i].querySelectorAll('.point');
@@ -236,7 +235,7 @@ function flipCardsBack() {
     cards[i].classList.remove("flip");
 }
 
-let combinationTable = document.querySelector(".combinations");
+const combinationTable = document.querySelector(".combinations");
 
 function highlightWinningCell(combination, coin) {
   if (combination.id === 0)
@@ -271,7 +270,7 @@ function refresh() {
   flipCardsBack();
 }
 
-let balance = document.querySelector(".balance");
+const balance = document.querySelector(".balance");
 
 function calculateResult(combination, coin) {
   let result = 0;
@@ -298,8 +297,8 @@ function checkBankruptcy() {
     showModal();
 }
 
-let restartModal = document.querySelector(".over-modal");
-let restartBtn = document.querySelector(".restart");
+const restartModal = document.querySelector(".over-modal");
+const restartBtn = document.querySelector(".restart");
 
 restartBtn.addEventListener("click", () => {
   restartModal.classList.remove("active");
@@ -310,9 +309,9 @@ function showModal() {
   setTimeout(() => restartModal.classList.add("active"), 2300);
 }
 
-let payout = document.querySelector(".payout");
-let payoutText = document.querySelector(".payout .text");
-let payoutNumber = document.querySelector(".payout .number");
+const payout = document.querySelector(".payout");
+const payoutText = document.querySelector(".payout .text");
+const payoutNumber = document.querySelector(".payout .number");
 function showResult(result) {
   if (result >= 0)
     payoutText.innerHTML = "Payout:";
@@ -323,7 +322,7 @@ function showResult(result) {
   setTimeout(() => payout.classList.remove("active"), 1500);
 }
 
-let betSlides = document.querySelectorAll(".bet-item");
+const betSlides = document.querySelectorAll(".bet-item");
 let currentIndex = 0;
 
 function showBet(index) {
