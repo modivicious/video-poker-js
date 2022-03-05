@@ -306,12 +306,13 @@ restartBtn.addEventListener("click", () => {
 });
 
 function showModal() {
-  setTimeout(() => restartModal.classList.add("active"), 2300);
+  setTimeout(() => restartModal.classList.add("active"), 2100);
 }
 
 const payout = document.querySelector(".payout");
 const payoutText = document.querySelector(".payout .text");
 const payoutNumber = document.querySelector(".payout .number");
+
 function showResult(result) {
   if (result >= 0)
     payoutText.innerHTML = "Payout:";
@@ -319,7 +320,7 @@ function showResult(result) {
     payoutText.innerHTML = "You lose:";
   payoutNumber.innerHTML = "$" + Math.abs(result);
   payout.classList.add("active");
-  setTimeout(() => payout.classList.remove("active"), 1500);
+  setTimeout(() => payout.classList.remove("active"), 1700);
 }
 
 const betSlides = document.querySelectorAll(".bet-item");
@@ -368,7 +369,7 @@ let newDistribution = true;
 
 dealBtn.addEventListener("click", function () {
   this.classList.add("disabled");
-  setTimeout(() => this.classList.remove("disabled"), 1600);
+  setTimeout(() => this.classList.remove("disabled"), 3000);
   if (newDistribution) {
     refresh();
     newRound();
