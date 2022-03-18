@@ -42,19 +42,26 @@ class Player {
   }
 }
 
+async function delay(ms) {
+  await new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function random(min, max) {
   let r = min + Math.random() * (max + 1 - min);
   return Math.floor(r);
 }
 
 function setStartValues() {
-  player = new Player("Player", 50000);
+  const startBalance = 50000;
+  player = new Player("Player", startBalance);
   refresh();
   newDistribution = true;
-  balance.innerHTML = 50000;
+  balance.innerHTML = startBalance;
   switchBetLine(1);
+  prevSlideBtn.disabled = false;
+  nextSlideBtn.disabled = false;
   for (let btn of holdButtons)
-    btn.classList.add("disabled");
+    btn.disabled = true;
 }
 
 function checkCombination() {
@@ -206,28 +213,27 @@ function getSuitColor(index) {
   else return "black";
 }
 
-function changeCards() {
+async function changeCards() {
   if (holdingCards.length === 5)
     return;
+
+  for (let i = 0; i < 5; i++)
+    if (!holdingCards.includes(i))
+      cards[i].classList.remove("flip");
+  await delay(500);
   for (let i = 0; i < 5; i++) {
     if (!holdingCards.includes(i)) {
-      cards[i].classList.remove("flip");
-      setTimeout(() => {
-        player.cards[i] = deck.getTopCard();
-        cardRender(i);
-      }, 200);
+      player.cards[i] = deck.getTopCard();
+      cardRender(i);
     }
   }
-  setTimeout(() => {
-    for (let i = 0; i < 5; i++)
-      flipCard(i);
-  }, 500);
+  await delay(200);
+  for (let i = 0; i < 5; i++)
+    flipCard(i);
 }
 
 function flipCard(index) {
-  setTimeout(() => {
-    cards[index].classList.add("flip");
-  }, 200);
+  cards[index].classList.add("flip");
 }
 
 function flipCardsBack() {
@@ -288,13 +294,15 @@ function calculateResult(combination, coin) {
     player.dollars += result;
   }
   balance.innerHTML = player.dollars;
-  setTimeout(() => showResult(result), 400);
+  showResult(result);
   checkBankruptcy();
 }
 
-function checkBankruptcy() {
-  if (player.dollars === 0)
+async function checkBankruptcy() {
+  if (player.dollars === 0) {
+    await delay(1700);
     showModal();
+  }
 }
 
 const restartModal = document.querySelector(".over-modal");
@@ -306,7 +314,7 @@ restartBtn.addEventListener("click", () => {
 });
 
 function showModal() {
-  setTimeout(() => restartModal.classList.add("active"), 2100);
+  restartModal.classList.add("active")
 }
 
 const payout = document.querySelector(".payout");
@@ -364,46 +372,44 @@ for (let btn of holdButtons) {
   });
 }
 
-let dealBtn = document.querySelector('.deal-button');
+const dealBtn = document.querySelector('.deal-button');
 let newDistribution = true;
 
-dealBtn.addEventListener("click", function () {
-  this.classList.add("disabled");
-  setTimeout(() => this.classList.remove("disabled"), 3000);
+dealBtn.addEventListener("click", async function () {
+  this.disabled = true;
+  setTimeout(() => { this.disabled = false }, 2300);
   if (newDistribution) {
     refresh();
-    newRound();
+    await newRound();
     newDistribution = false;
   }
   else {
-    changeCards();
-    setTimeout(() => {
-      let combination = checkCombination();
-      setTimeout(() => highlightWinningCell(combination, currentIndex + 1), 400);
-      calculateResult(combination, currentIndex + 1);
-    }, 1000);
+    await changeCards();
+    let combination = checkCombination();
+    await delay(600);
+    highlightWinningCell(combination, currentIndex + 1);
+    calculateResult(combination, currentIndex + 1);
     newDistribution = true;
   }
   for (let btn of holdButtons)
-    btn.classList.toggle("disabled");
-  prevSlideBtn.classList.toggle("disabled");
-  nextSlideBtn.classList.toggle("disabled");
+    btn.disabled = !btn.disabled;
+  prevSlideBtn.disabled = !prevSlideBtn.disabled;
+  nextSlideBtn.disabled = !nextSlideBtn.disabled;
 });
 
 let deck;
 let player;
 
-function newRound() {
-  setTimeout(() => {
-    deck = new Deck;
-    deck.shuffle();
-    deck.distribution();
+async function newRound() {
+  deck = new Deck;
+  deck.shuffle();
+  deck.distribution();
 
-    for (let i = 0; i < 5; i++) {
-      cardRender(i);
-      setTimeout(() => flipCard(i), 200);
-    }
-  }, 300);
+  await delay(700);
+  for (let i = 0; i < 5; i++) {
+    cardRender(i);
+    flipCard(i);
+  }
 }
 
 function startGame() {
