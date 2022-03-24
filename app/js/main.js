@@ -43,8 +43,8 @@
     }
   }
 
-  async function delay(ms) {
-    await new Promise(resolve => setTimeout(resolve, ms));
+  function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   function random(min, max) {
