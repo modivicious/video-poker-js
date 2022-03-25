@@ -206,7 +206,7 @@
   }
 
   function getSuitColor(index) {
-    player.cards[index].suit === "diamonds" || player.cards[index].suit === "hearts" ? "red" : "black";
+    return (player.cards[index].suit === "diamonds" || player.cards[index].suit === "hearts") ? "red" : "black";
   }
 
   async function changeCards() {
