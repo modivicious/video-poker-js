@@ -19,10 +19,10 @@
     }
     shuffle() {
       for (let i = 0; i < 52; i++) {
-        let r = random(0, 51);
-        let t = this.cards[i];
-        this.cards[i] = this.cards[r];
-        this.cards[r] = t;
+        let rand = random(0, 51);
+        let temp = this.cards[i];
+        this.cards[i] = this.cards[rand];
+        this.cards[rand] = temp;
       }
     }
     getTopCard() {
@@ -48,8 +48,8 @@
   }
 
   function random(min, max) {
-    let r = min + Math.random() * (max + 1 - min);
-    return Math.floor(r);
+    let rand = min + Math.random() * (max + 1 - min);
+    return Math.floor(rand);
   }
 
   function setStartValues() {
@@ -162,20 +162,17 @@
   const cards = document.querySelectorAll('.card');
 
   function cardRender(i) {
-    let points = cards[i].querySelectorAll('.point');
-    let suits = cards[i].querySelectorAll('.suit');
+    const points = cards[i].querySelectorAll('.point');
+    const suits = cards[i].querySelectorAll('.suit');
     const HTMLpoint = getHTMLpoint(i);
     const HTMLsuit = getHTMLsuit(i);
     const color = getSuitColor(i);
     for (let point of points) {
       point.innerHTML = HTMLpoint;
-      if (color === "red")
-        point.classList.add("red");
-      else point.classList.remove("red");
+      color === "red" ? point.classList.add("red") : point.classList.remove("red");
     }
-    for (let suit of suits) {
+    for (let suit of suits)
       suit.setAttribute("src", "images/icons/" + HTMLsuit);
-    }
   }
 
   function getHTMLsuit(index) {
@@ -209,9 +206,7 @@
   }
 
   function getSuitColor(index) {
-    if (player.cards[index].suit === "diamonds" || player.cards[index].suit === "hearts")
-      return "red";
-    else return "black";
+    player.cards[index].suit === "diamonds" || player.cards[index].suit === "hearts" ? "red" : "black";
   }
 
   async function changeCards() {
@@ -245,8 +240,7 @@
   const combinationTable = document.querySelector(".combinations");
 
   function highlightWinningCell(combination, coin) {
-    if (combination.id === 0)
-      return;
+    if (combination.id === 0) return;
     combinationTable.rows[9 - combination.id].cells[coin].classList.add("winning");
   }
 
@@ -323,10 +317,7 @@
   const payoutNumber = document.querySelector(".payout .number");
 
   function showResult(result) {
-    if (result >= 0)
-      payoutText.innerHTML = "Payout:";
-    else
-      payoutText.innerHTML = "You lose:";
+    result >= 0 ? payoutText.innerHTML = "Payout:" : payoutText.innerHTML = "You lose:";
     payoutNumber.innerHTML = "$" + Math.abs(result);
     payout.classList.add("active");
     setTimeout(() => payout.classList.remove("active"), 1700);
@@ -366,10 +357,7 @@
     btn.addEventListener("click", function () {
       let cardNum = holdButtons.indexOf(this);
       this.classList.toggle("active");
-      if (!holdingCards.includes(cardNum))
-        holdingCards.push(cardNum);
-      else
-        holdingCards.splice(holdingCards.indexOf(cardNum), 1);
+      !holdingCards.includes(cardNum) ? holdingCards.push(cardNum) : holdingCards.splice(holdingCards.indexOf(cardNum), 1);
     });
   }
 
